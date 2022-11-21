@@ -14,19 +14,4 @@
     </div>
 </div>
 
-<?php if (isset($_SESSION['user_id'])):?>
-    <div class="container" id="listContainer">
-        <div class="listing">
-            <ul>
-                <?php for ($i = 0; $i < count($user_date); $i++):?>
-                    <div class="weights">
-                        <button>del</button>
-                        <li><?=$user_date[$i], " ", $user_weight[$i];?></li>
-                    </div>
-                <?php endfor;?>
-            </ul>
-        </div>
-    </div>
-<?php endif;?>
-
 <?php require('partials/footer.php');?>

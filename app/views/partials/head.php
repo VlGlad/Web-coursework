@@ -41,7 +41,7 @@
                     </div>
                 <?php else:?>
                     <div class="logOutButtonContainer">
-                        <p id="helloText">Hello, <?=$user_name?></p>
+                        <p id="helloText">Hello, <?=$this->user_name?></p>
                         <a href="logout" style="color: red;">Logout</a>
                     </div>
                 <?php endif;?>
