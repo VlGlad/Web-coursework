@@ -40,6 +40,7 @@ class Users{
             }
             $answer['login'] = true;
             $_SESSION['user_id'] = $user[0]->id;
+            $_SESSION['admin_user'] = $user[0]->admin_user;
         }
         echo json_encode($answer);
         

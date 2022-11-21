@@ -1,8 +1,8 @@
-function sendButtonRequest(event, num){
+function sendButtonRequest(event){
     button_id = event.target.id;
     let data_body = ["button_id=" + button_id];
 
-    fetch("getNames", { 
+    fetch("delete", { 
         method: "POST",
         body: data_body,
         headers:{"content-type": "application/x-www-form-urlencoded"}
@@ -13,13 +13,9 @@ function sendButtonRequest(event, num){
             }
     return response.text()
     })
-    /* .then((data) => {
-        parent = event.target.parentNode;
-        parent.style.display = 'None';
-    }) */
     .catch();
 
-    /* window.location.href = "/edit"; */
+    event.target.parentNode.remove()
 }
 
 

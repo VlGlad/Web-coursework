@@ -21,7 +21,7 @@ class WeightController
 
     public function getNames($args = NULL)
     {
-        $weight_points = App::get('database')->getRowsWhere($this->weight_table, ['user_id' => $_SESSION['user_id']], 'order by date');
+        $weight_points = App::get('database')->getRowsWhere($this->weight_table, ['user_id' => $_POST['user_id']], 'order by date');
         echo json_encode($weight_points);
     }
 
@@ -32,8 +32,12 @@ class WeightController
 
     public function edit($args = NULL)
     {
-        $this->initNames();
-        require "app/views/edit.view.php";
+        if (!$_SESSION['admin_user']){
+            $this->initNames();
+            require "app/views/edit.view.php";
+        } else {
+            require "app/views/edit_admin.view.php";
+        }
     }
 
     public function addPoint($args = NULL){
