@@ -18,6 +18,7 @@ App::bind(
     'router', Router::create('app/routes.php')
 );
 
+
 App::get('router')->direct();
 
 

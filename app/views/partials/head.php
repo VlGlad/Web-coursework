@@ -7,12 +7,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="public/css/main.css">
     <script type="text/javascript" src="public/js/js.js"></script>
-    <title>Weight App</title>
+    <script type="text/javascript" src="public/js/functions.js"></script>
+    <title>Health App</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">Weight Tracker App</a>
+            <a class="navbar-brand" href="/">Health Status App</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Переключатель навигации">
             <span class="navbar-toggler-icon"></span>
             </button>

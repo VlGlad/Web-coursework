@@ -1,5 +1,5 @@
 body{
-    overflow: hidden;
+    /* overflow: hidden; */
     background-color: #f3f3f3;
 }
 
@@ -46,16 +46,35 @@ p#helloText{
     height: 100vh;
 }
 
-.container#graphContainer{
+/* .container#graphContainer{
     height: 100%;
+    background-color: #f9f9f9;
+} */
+
+.container{
     background-color: #f9f9f9;
 }
 
 .weights{
     display: flex;
     margin-top: 5px;
+    align-items: center;
+}
+
+.diseaseRow{
+    display: flex;
+    margin-top: 5px;
+    align-items: center;
 }
 
 .weights button{
     margin-right: 25px;
+}
+
+.diseaseRowButton{
+    margin-right: 25px;
+}
+
+.weights-container{
+    margin-top: 10px;
 }

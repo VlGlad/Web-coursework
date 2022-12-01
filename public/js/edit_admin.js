@@ -1,31 +1,9 @@
-function sendButtonRequest(event){
-    button_id = event.target.id;
-    let data_body = ["button_id=" + button_id];
-
-    fetch("delete", { 
-        method: "POST",
-        body: data_body,
-        headers:{"content-type": "application/x-www-form-urlencoded"}
-        })
-    .then((response) => {
-            if (response.status !== 200) {           
-                return Promise.reject();
-            }
-    return response.text()
-    })
-    .catch();
-
-    event.target.parentNode.remove()
-}
-
-
 document.addEventListener("DOMContentLoaded", function(e) {
-    console.log('hi');
-
     getWeights.onsubmit = async (e) => {
         e.preventDefault();
 
         weights_points.innerHTML = '';
+        diseases_points.innerHTML = '';
 
         data = new FormData(getWeights);
         
@@ -39,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
         console.log(result);
         
-        for (let row of result){
+        for (let row of result['weight']){
             console.log(row.weight);
             let liDiv = document.createElement('div');
             liDiv.className = 'weights';
@@ -49,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
             liButton.textContent = 'del';
             liButton.addEventListener('click', function(event) {
                 console.log('bruh');
-                sendButtonRequest(event)
+                sendButtonRequest(event, 'weight')
               })
             let liLast = document.createElement('li');
             liLast.textContent = row.date + ' ' + row.weight + 'kg';
@@ -57,6 +35,24 @@ document.addEventListener("DOMContentLoaded", function(e) {
             liDiv.append(liButton, liLast);
             weights_points.append(liDiv);
         }
-        
+
+        for (let row of result['disease']){
+            console.log(row.disease_fr_id);
+            let liDiv = document.createElement('div');
+            liDiv.className = 'diseaseRow';
+            let liButton = document.createElement('button');
+            liButton.className = 'diseaseDelButton btn btn-danger';
+            liButton.id = row.user_disease_id;
+            liButton.textContent = 'del';
+            liButton.addEventListener('click', function(event) {
+                console.log('bruh');
+                sendButtonRequest(event, 'disease')
+              })
+            let liLast = document.createElement('li');
+            liLast.textContent = row.disease_date + ' ' + row.disease_fr_id;
+            liLast.id = row.user_fr_id;
+            liDiv.append(liButton, liLast);
+            diseases_points.append(liDiv);
+        }
     };
 })

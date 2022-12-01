@@ -7,10 +7,24 @@ class QuerySelector
     public function __construct(PDO $pdo)
     {
         $this->pdo = $pdo;
-    }    
+    }
 
-    public function getAllRows($table){
-        $stmt = $this->pdo->query("SELECT * FROM {$table}");
+    public function setTab($row)
+    {
+        $stmt = $this->pdo->query("INSERT INTO deases (deases_name) VALUES ('{$row}')");
+        $table = $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $table;
+    }
+
+    /* public function getRow($table, $id)
+    {
+        $stmt = $this->pdo->query("SELECT * FROM {$table} LIMIT 1");
+        $table = $stmt->fetch(PDO::FETCH_OBJ);
+        return $table;
+    } */
+
+    public function getAllRows($table, $options=null){
+        $stmt = $this->pdo->query("SELECT * FROM {$table} {$options}");
         $table = $stmt->fetchAll(PDO::FETCH_OBJ);
         return $table;
     }

@@ -5,6 +5,7 @@
 <?php require('partials/head.php');?>
 
 <div class="container" id="graphContainer">
+    <h5>Weights points:</h5>
     <div class="listing">
         <ul>
             <?php for ($i = 0; $i < count($this->user_date); $i++):?>

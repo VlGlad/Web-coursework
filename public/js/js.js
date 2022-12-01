@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', (e) => {
         let response = await fetch('signin', {
             method: 'POST',
             body: data
-          });
-      
+        });
+        
         let result = await response.json();
 
         console.log(result);
@@ -95,7 +95,6 @@ document.addEventListener('DOMContentLoaded', (e) => {
     addPointForm.onsubmit = async (e) => {
         e.preventDefault();
 
-        debugger;
         data = new FormData(addPointForm);
 
         input_weight = data.get('weight');
@@ -130,8 +129,51 @@ document.addEventListener('DOMContentLoaded', (e) => {
         
         let result = await response.json();
     };
-});
 
+    addDiseaseForm.onsubmit = async (e) => {
+        e.preventDefault();
+
+        data = new FormData(addDiseaseForm);
+
+        let selector = addDiseaseForm.elements["diseasesSelect"]
+        let value = selector.value;
+        let id = selector.options[selector.selectedIndex].id;
+
+        post_data = "id=" + id + "&date=" + data.get('date');
+
+        // Отправляем запрос
+        let response = await fetch('add_disease', {
+            method: 'POST',
+            body: post_data,
+            headers:{"content-type": "application/x-www-form-urlencoded"}
+        });
+
+        let result = await response.json();
+
+        window.location.href = "/";
+    };
+
+    let btns = document.getElementsByClassName("diseaseRowButton")
+
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener('click', function(event) {
+            sendButtonRequest(event, 'disease');
+        })
+    }
+});
+ 
 function isValidDate(date) {
     return date && Object.prototype.toString.call(date) === "[object Date]" && !isNaN(date);
 }
+
+/*
+if (response.status !== 200) {           
+    return;
+}
+let mas = document.getElementsByClassName("diseaseRow");
+let mas2 = [];
+for (let inner_div of mas){
+    mas2.push([inner_div.childNodes[3].textContent.slice(0, 10), inner_div.childNodes[3].textContent.slice(11, inner_div.childNodes[3].textContent.length)]);
+}
+mas2.push([data.get('date'), value]);
+mas2.sort(); */

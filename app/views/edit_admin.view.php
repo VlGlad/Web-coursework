@@ -7,32 +7,22 @@ if (!isset($_SESSION['user_id']) && (!$_SESSION['admin_user'])){
 
 <div class="container" id="graphContainer">
 
+    <h5>Enter user ID:</h5>
+
     <form action="" name="getWeights">
         <input type="text" name="user_id">
         <input type="submit">
     </form>
     
-    <?php /*?>
-    <div class="listing">
-        <ul>
-            <?php for ($i = 0; $i < count($this->user_date); $i++):?>
-                <div class="weights">
-                    <button class="weightsButtons btn btn-danger" id="<?php echo $this->weight_points[$i]->weight_id;?>">del</button>
-                    <li><?=$this->user_date[$i], " ", $this->user_weight[$i];?>kg</li>
-                </div>
-            <?php endfor;?>
-        </ul>
-    </div>
-    <?php */?>
     <div class="weights-container">
         <h5>Users weights points:</h5>
         <ul id="weights_points">
 
         </ul>
     </div>
-    <div class="second-container">
+    <div class="diseases-container">
         <h5>Users some other points:</h5>
-        <ul id="some-points">
+        <ul id="diseases_points">
 
         </ul>
     </div>

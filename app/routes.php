@@ -9,3 +9,4 @@ $router->post('addpoint', 'WeightController@addPoint');
 $router->get('edit', 'WeightController@edit');
 $router->post('delete', 'WeightController@delete');
 $router->post('get_names', 'WeightController@getNames');
+$router->post('add_disease', 'WeightController@addDisease');
