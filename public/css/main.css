@@ -71,7 +71,11 @@ p#helloText{
     margin-right: 25px;
 }
 
-.diseaseRowButton{
+.diseaseDelButton{
+    margin-right: 25px;
+}
+
+.diseaseEditButton{
     margin-right: 25px;
 }
 

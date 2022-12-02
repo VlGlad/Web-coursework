@@ -153,11 +153,19 @@ document.addEventListener('DOMContentLoaded', (e) => {
         window.location.href = "/";
     };
 
-    let btns = document.getElementsByClassName("diseaseRowButton")
+    let btns = document.getElementsByClassName("diseaseDelButton")
 
     for (var i = 0; i < btns.length; i++) {
         btns[i].addEventListener('click', function(event) {
-            sendButtonRequest(event, 'disease');
+            sendDelRequest(event, 'disease');
+        })
+    }
+
+    let btns2 = document.getElementsByClassName("diseaseEditButton")
+
+    for (var i = 0; i < btns2.length; i++) {
+        btns2[i].addEventListener('click', function(event) {
+            sendEditRequest(event, 'disease');
         })
     }
 });

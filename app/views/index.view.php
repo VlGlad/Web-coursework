@@ -17,13 +17,13 @@
 <?php if (isset($_SESSION['user_id'])):?>
     <div class="container" style="padding-top: 25px;">
 
-        <form action="" name="addDiseaseForm">
-            <select name="diseasesSelect">
+        <form action="" name="addDiseaseForm" id="diseaseForm">
+            <select name="diseasesSelect" id="selectorDisease">
                 <?php foreach ($diseases as $diseas):?>
                     <option id="<?php echo $diseas->deases_id?>"><?php echo $diseas->deases_name?></option>
                 <?php endforeach;?>
             </select>
-            <input type="date" name="date" value="<?php echo date("Y-m-d"); ?>">
+            <input type="date" id="date_input" name="date" value="<?php echo date("Y-m-d"); ?>">
             <input type="submit" value="Добавить">
         </form>
 

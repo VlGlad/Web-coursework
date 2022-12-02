@@ -18,6 +18,5 @@
     </div>
 </div>
 
-
 <script type="text/javascript" src="public/js/edit.js"></script>
 <?php require('partials/footer.php');?>
