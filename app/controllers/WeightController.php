@@ -26,7 +26,7 @@ class WeightController
         $weight_points = App::get('database')->getRowsWhere($this->weight_table, ['user_id' => $_POST['user_id']], 'order by date');
 
         $diseases = App::get('database')->getAllRows("deases");
-        $diseas_rows = App::get('database')->getRowsWhere($this->disease_table, ['user_fr_id' => $_SESSION['user_id']], 'order by disease_date');
+        $diseas_rows = App::get('database')->getRowsWhere($this->disease_table, ['user_fr_id' => $_POST['user_id']], 'order by disease_date');
 
         foreach ($diseas_rows as $disease_item) {
             foreach ($diseases as $item) {
@@ -54,6 +54,7 @@ class WeightController
         if (!$_SESSION['admin_user']){
             require "app/views/edit.view.php";
         } else {
+            $diseases = App::get('database')->getAllRows("deases");
             require "app/views/edit_admin.view.php";
         }
     }
@@ -92,9 +93,7 @@ class WeightController
     {
         $id = array_pop($_POST);
         $table = array_pop($_POST);
-        if ($table == 'weight'){
-            
-        } else if ($table == 'user_diseases'){
+        if ($table == 'user_diseases'){
             
             $disease_fr_id = App::get('database')->getRowsWhere("deases", ["deases_name" => $_POST["diseasesSelect"]])[0]->deases_id;
             $data = [
@@ -102,6 +101,14 @@ class WeightController
                 'disease_date' => $_POST["date"]
             ];
             App::get('database')->update($table, $data, ['user_disease_id' => $id]);
+            
+        } else if ($table == 'weight'){
+            
+            $data = [
+                'weight' => $_POST["weight"],
+                'date' => $_POST["date"]
+            ];
+            App::get('database')->update($this->weight_table, $data, ['weight_id' => $id]);
         }
     }
 }

@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
     for (var i = 0; i < btns2.length; i++) {
         btns2[i].addEventListener('click', function(event) {
-            sendEditRequest(event, 'disease');
+            sendEditRequest(event, 'user_diseases');
         })
     }
 });

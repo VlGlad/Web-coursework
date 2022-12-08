@@ -28,5 +28,19 @@ if (!isset($_SESSION['user_id']) && (!$_SESSION['admin_user'])){
     </div>
 </div>
 
+<?php if (isset($_SESSION['user_id'])):?>
+    <div class="container" style="display: none;">
+        <form action="" name="addDiseaseForm" id="diseaseForm">
+            <select name="diseasesSelect" id="selectorDisease">
+                <?php foreach ($diseases as $diseas):?>
+                    <option id="<?php echo $diseas->deases_id?>"><?php echo $diseas->deases_name?></option>
+                <?php endforeach;?>
+            </select>
+            <input type="date" id="date_input" name="date" value="<?php echo date("Y-m-d"); ?>">
+            <input type="submit" value="Добавить">
+        </form>
+    </div>
+<?php endif;?>
+
 <script type="text/javascript" src="public/js/edit_admin.js"></script>
 <?php require('partials/footer.php');?>
