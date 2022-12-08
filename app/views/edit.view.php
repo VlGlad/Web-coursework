@@ -11,6 +11,7 @@
             <?php for ($i = 0; $i < count($this->user_date); $i++):?>
                 <div class="weights">
                     <button class="weightsButtons btn btn-danger" id="<?php echo $this->weight_points[$i]->weight_id;?>">del</button>
+                    <button class="weightsEditButtons btn btn-warning" id="<?php echo $this->weight_points[$i]->weight_id;?>">edit</button>
                     <li><?=$this->user_date[$i], " ", $this->user_weight[$i];?>kg</li>
                 </div>
             <?php endfor;?>

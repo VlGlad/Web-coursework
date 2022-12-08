@@ -88,8 +88,20 @@ class WeightController
         echo json_encode(App::get('database')->getRowsWhere($this->disease_table, ['user_fr_id' => $_SESSION['user_id']], 'order by disease_date'));
     }
 
-    /* public function getDiseaseName($args = NULL)
+    public function update($args = NULL)
     {
-        echo json_encode(App::get('database')->getRowsWhere('deases', ['deases_id' => $diseas->disease_fr_id]));
-    } */
+        $id = array_pop($_POST);
+        $table = array_pop($_POST);
+        if ($table == 'weight'){
+            
+        } else if ($table == 'user_diseases'){
+            
+            $disease_fr_id = App::get('database')->getRowsWhere("deases", ["deases_name" => $_POST["diseasesSelect"]])[0]->deases_id;
+            $data = [
+                'disease_fr_id' => $disease_fr_id,
+                'disease_date' => $_POST["date"]
+            ];
+            App::get('database')->update($table, $data, ['user_disease_id' => $id]);
+        }
+    }
 }

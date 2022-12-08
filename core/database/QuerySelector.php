@@ -69,11 +69,32 @@ class QuerySelector
         $stmt->execute($data);
     }
 
+    public function update($table, $data, $id)
+    {
+        $request = sprintf(
+            "UPDATE %s SET %s WHERE %s",
+            $table,
+            $this->constructRow($data),
+            $this->constructRow($id)
+        );
+        $stmt = $this->pdo->prepare($request);
+        $stmt->execute(array_merge($data, $id));
+    }
+
     public function updatePassword($table, $data)
     {
         $request = "UPDATE {$table} SET password = :password WHERE id = :id";
         $stmt = $this->pdo->prepare("UPDATE {$table} SET password = :password WHERE id = :id");
         $stmt->execute($data);
+    }
+
+    private function constructRow($arr, $end=",")
+    {
+        $temp_arr = [];
+        foreach ($arr as $key => $value) {
+            $temp_arr[] = $key . "=:" . $key;
+        }
+        return implode(',', $temp_arr);
     }
 }
 
